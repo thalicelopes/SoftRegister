@@ -1,0 +1,57 @@
+﻿<Window x:Class="SoftRegisterProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SoftRegisterProject" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Teste IdealSoft - CRUD Contatos" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="171*"/>
+            <ColumnDefinition Width="34*"/>
+            <ColumnDefinition Width="195*"/>
+        </Grid.ColumnDefinitions>
+        <Label Name="labelId" FontStyle="Italic" Content="Id: " IsEnabled="False" Visibility="Hidden" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" Width="110"/>
+        <Label Name="labelFirstName" FontStyle="Italic" Content="Nome: " Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="29,36,0,0" VerticalAlignment="Top" Width="110"/>
+        <Label Name="labelLastName" FontStyle="Italic" Content="Sobrenome: " Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="29,62,0,0" VerticalAlignment="Top" Width="110"/>
+        <Label Name="labelPhoneNumber"  FontStyle="Italic" Content="Telefone: " Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="29,87,0,0" VerticalAlignment="Top" Width="110"/>
+        <TextBox Name="textBoxId" FontStyle="Italic" Grid.ColumnSpan="3" IsEnabled="False" Visibility="Hidden" HorizontalAlignment="Left" Margin="144,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBox Name="textBoxName" FontStyle="Italic" Grid.ColumnSpan="3" MaxLength="50" HorizontalAlignment="Left" Margin="144,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBox Name="textBoxLastName" FontStyle="Italic" Grid.ColumnSpan="3" MaxLength="50" HorizontalAlignment="Left" Margin="144,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBox  Name="textBoxPhone" FontStyle="Italic" Grid.ColumnSpan="3" MaxLength="11" HorizontalAlignment="Left" Margin="144,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" PreviewTextInput="TextBoxPhone_TextChanged"/>
+        <Button Name="btnSaveContact" FontStyle="Italic" Content="Cadastrar Contato" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="190,139,0,0" VerticalAlignment="Top" Width="131" Click="btnSaveContact_Click"/>
+        <DataGrid Name="dataGridContacts" FontStyle="Italic" IsReadOnly="True" CanUserAddRows="False" Grid.Column="3" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Path=ContactId}" Width="*"/>
+                <DataGridTextColumn Header="Nome" Binding="{Binding Path=FirstName}" Width="*"/>
+                <DataGridTextColumn Header="Sobrenome" Binding="{Binding Path=LastName}" Width="*"/>
+                <DataGridTextColumn Header="Telefone" Binding="{Binding Path=PhoneNumber}" Width="*"/>
+                <DataGridTemplateColumn Header="Editar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnEditContact" Background="LightBlue" BorderBrush="Transparent">
+                                <materialDesign:PackIcon Kind="Pencil" Width="16" Height="16"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Deletar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnDeleteContact" Background="LightCoral" BorderBrush="Transparent">
+                                <materialDesign:PackIcon Kind="Delete" Width="16" Height="16"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="🔄" Name="btnReloadForm" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="165,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.309,0.524" Click="btnReloadFormClick"/>
+        <Label Content="Desenvolvido Por:" FontStyle="Italic" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="55,333,0,0" VerticalAlignment="Top"/>
+        <Label Content="Thálice Lopes da Silva" FontStyle="Italic" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="55,350,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
